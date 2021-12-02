@@ -7,32 +7,58 @@ namespace Open_Lab_10._01
         static void Main(string[] args)
         {
             Book LOTR = new Book();
-            LOTR.Názov("Najlepšia kniha");
-            LOTR.Žáner("SciFi");
-            LOTR.Vydanie("prosinec");
-            LOTR.Autor("Yanko");
-            LOTR.Strany(12);
+            LOTR.Title = "Najlepšia kniha";
+            LOTR.Cathegory = "SciFi";
+            LOTR.ReleaseDate = 1863;
+            LOTR.Author = "Yanko";
+            LOTR.Pages = 12;
+            LOTR.Write();
         }
-        class Book
+        public class Book
         {
-            private string title;
-            private string cathegory;
-            private string releaseDate;
-            private string author;
-            private int pages;
-            public void Názov(string novýNázov) { title = novýNázov; }
-            public void Žáner(string novýŽáner) { cathegory = novýŽáner; }
-            public void Vydanie(string novéVydanie) { releaseDate = novéVydanie; }
-            public void Autor(string novýAutor) { author = novýAutor; }
-            public void Strany(int novéStrany) { pages = novéStrany; }
-
-            public void NapíšPremenné()
+            public string Title { get; set; }
+        private int pages;
+        public int Pages
+        {
+            get { return pages; }
+            set
             {
-                Console.WriteLine("Názov: " + title);
-                Console.WriteLine("Počet strán: " + pages);
-                Console.WriteLine("Žáner: " + cathegory);
-                Console.WriteLine("Autor: " + author);
-                Console.WriteLine("Dátum vydania: " + releaseDate);
+                if (value < 0)
+                {
+                    pages = 1;
+                }
+                else
+                {
+                    pages = value;
+                }
+            }
+        }
+        public string Cathegory { get; set; }
+        public string Author { get; set; }
+        private int releaseDate;
+        public int ReleaseDate
+        {
+            get { return releaseDate; }
+            set
+            {
+                if (value <= 2021 && value >= 1450)
+                    {
+                releaseDate = value;
+                }
+                else
+                {
+                    releaseDate = -1;
+                }
+            }
+        }
+
+            public void Write()
+            {
+                Console.WriteLine("Názov: " + Title);
+                Console.WriteLine("Počet strán: " + Pages);
+                Console.WriteLine("Žáner: " + Cathegory);
+                Console.WriteLine("Autor: " + Author);
+                Console.WriteLine("Dátum vydania: " + ReleaseDate);
             }
         }
     }
