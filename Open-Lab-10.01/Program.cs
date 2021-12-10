@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Open_Lab_10._04
 {
@@ -9,7 +10,7 @@ namespace Open_Lab_10._04
             Book LOTR = new Book();
             Book LOTR2 = new Book("NF",420);
             Book LOTR3 = new Book("REAL", 410, 1945, "Nate","reálny");
-            Book HOBIT = new Book();
+            Book HOBIT = new Book("REAL", 410, 1945, "Nate", Book.cathegoryList[2]);
             LOTR.Write();
             LOTR2.Write();
             LOTR3.Write();
@@ -17,6 +18,14 @@ namespace Open_Lab_10._04
         }
         public class Book
         {
+            /// <summary>
+            /// I developed a new list with book cathegories.
+            /// </summary>
+            public static List<string> cathegoryList = new List<string>
+            {
+            "detské", "romantické", "náučné", "sci-fi", "dobrodružné"
+            };
+            
             public Book()
                 {
                 Title = "-1";
@@ -61,7 +70,7 @@ namespace Open_Lab_10._04
                 }
             }
         }
-        public string Cathegory { get; set; }
+        public string Cathegory {private get; set; }
         public string Author { get; set; }
         private int releaseDate;
         public int ReleaseDate
